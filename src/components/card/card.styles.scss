@@ -1,0 +1,50 @@
+.card-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  box-shadow: 0 2px 20px #e1e5ee;
+  background-color: white;
+  cursor: pointer;
+  transform: translateZ(0);
+  transition: transform 200ms ease-in;
+
+  img {
+    height: 20rem;
+    width: 400px;
+    object-fit: fill;
+  }
+  .card-title {
+    padding: 1rem;
+    margin: 0;
+    font-size: 30px;
+  }
+
+  .card-city {
+    padding: 0 1rem;
+    font-size: 20px;
+  }
+}
+
+.card-container:hover {
+  transform: scale(1.05);
+}
+
+.card-container:hover > .card-btn {
+  background: #d50000;
+  color: white;
+}
+
+.card-btn {
+  padding: 1rem;
+  font-family: inherit;
+  font-weight: bold;
+  font-size: 1rem;
+  margin: 1rem;
+  border: 2px solid #d50000;
+  background: transparent;
+  cursor: pointer;
+  color: #d50000;
+  border-radius: 0.2rem;
+  transition: background 200ms ease-in, color 200ms ease-in;
+}

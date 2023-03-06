@@ -1,0 +1,94 @@
+.bg::before {
+  content: " ";
+  background-image: url("https://content.jdmagicbox.com/comp/mehsana/s3/9999p2762.2762.160629110736.j8s3/catalogue/modest-restaurant-kadi-mehsana-punjabi-delivery-restaurants-jtmne1hywg.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 500px;
+  width: 100%;
+  display: flex;
+  background-color: #000;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+.bg {
+  position: relative;
+  background-color: #000;
+  height: 500px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay-text {
+  color: white;
+  z-index: 10;
+  position: relative;
+  font-size: 50px;
+  text-align: center;
+}
+
+.res-city {
+  font-size: 30px;
+  margin: 0;
+}
+
+.res-title {
+  margin: 0;
+}
+
+.update-btn {
+  padding: 1rem;
+  font-family: inherit;
+  font-weight: bold;
+  font-size: 1rem;
+  margin: 1rem;
+  border: 2px solid white;
+  background: transparent;
+  cursor: pointer;
+  color: white;
+  border-radius: 0.2rem;
+  transition: background 200ms ease-in, color 200ms ease-in;
+}
+
+.update-btn:hover {
+  color: black;
+  background-color: white;
+}
+
+.menu-div {
+  text-align: center;
+  margin: 15px auto 15px auto;
+  font-family: inherit;
+  font-size: 50px;
+  background-color: #efefef;
+  padding: 10px;
+  font-weight: 800;
+}
+
+.categories {
+  padding-left: 3rem;
+  padding-right: 3rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.add-btn {
+  background-color: #000;
+  padding: 1rem;
+  font-family: inherit;
+  font-weight: bold;
+  font-size: 1rem;
+  border: 2px solid #000;
+  background: transparent;
+  cursor: pointer;
+}
+
+.add-btn:hover {
+  background-color: #000;
+  color: white;
+}
