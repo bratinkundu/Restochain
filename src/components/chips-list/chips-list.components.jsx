@@ -5,7 +5,7 @@ import "./chips-list.styles.scss";
 const ChipsList = (props) => (
   <div className="chips-list">
     {props.categories.map((r) => (
-      <Chips key={r} name={r}></Chips>
+      <Chips key={r} name={r} removeChips={props.removeChips}></Chips>
     ))}
   </div>
 );

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import ChipsList from "../../components/chips-list/chips-list.components";
@@ -8,21 +8,27 @@ import Dropdown from "../../components/form-input/dropdown.component";
 import Modal from "../../components/modal/modal.component";
 
 const RestaurantDetails = () => {
-
   const [modal, setModal] = useState(false);
-  const [categories] = useState(["Soups", "Starters", "Chinese", "Sizzlers", "Continental"]);
+  const [categories, setCategories] = useState([
+    "Soups",
+    "Starters",
+    "Chinese",
+    "Sizzlers",
+    "Continental",
+  ]);
   const [menu, setMenu] = useState([]);
   const [itemName, setItemName] = useState("");
   const [itemDescription, setItemDescription] = useState("");
   const [itemCategory, setItemCategory] = useState("");
   const [itemPrice, setItemPrice] = useState("");
+  const [categoryInput, setCategoryInput] = useState("");
 
   useEffect(() => {
-    console.log(menu)
-    console.log(modal)
-  }, [menu, modal])
+    console.log(menu);
+    console.log(modal);
+  }, [menu, modal]);
 
-  const menuCategoriesList = ['ALL',...categories ]
+  const menuCategoriesList = ["ALL", ...categories];
 
   const handleChange = (event) => {
     const { value, name } = event.target;
@@ -39,18 +45,27 @@ const RestaurantDetails = () => {
       case "itemCategory":
         setItemCategory(value);
         break;
+      case "categoryInput":
+        setCategoryInput(value);
+        break;
       default:
         break;
     }
   };
 
+  const addNewCategory = () => {
+    setCategories((prev)=> [...prev, categoryInput])
+    setCategoryInput("")
+    setModal(false)
+  }
+
   const openCategoryModal = (event) => {
-    event.preventDefault();
-    setModal(true)
+    console.log("openCategoryModal");
+    setModal(true);
   };
 
   const handleCloseModal = () => {
-    setModal(false)
+    setModal(false);
     console.log("Closed modal", modal);
   };
 
@@ -64,7 +79,6 @@ const RestaurantDetails = () => {
       category: itemCategory,
     };
 
-
     setMenu([...menu, menuItem]);
     setItemName("");
     setItemDescription("");
@@ -73,80 +87,96 @@ const RestaurantDetails = () => {
     console.log(menu);
   };
 
-    return (
-      <div>
-        <div className="bg">
-          <div className="overlay-text">
-            <h2 className="res-title">Modest Restaurant</h2>
-            <h3 className="res-city">Kadi, Mehsana</h3>
-            <button className="update-btn">Download QR Code</button>
-          </div>
-        </div>
-        <div className="menu-div">Menu</div>
-        <div className="categories">
-          <ChipsList categories={categories}></ChipsList>
-          <div className="add-btn" onClick={openCategoryModal}>
-            <FontAwesomeIcon icon="fa-solid fa-plus" /> Add Category
-            <Modal
-              isOpen={modal}
-              onClose={handleCloseModal}
-            >
-              <h2>This is sample modal popup</h2>
-              <p>This is Modal Popup</p>
-            </Modal>
-          </div>
-        </div>
-        <div className="menu-add-list">
-          <FormInput
-            name="itemName"
-            type="text"
-            label="Dish Name"
-            value={itemName}
-            handleChange={handleChange}
-            placeholder="Enter name of Dish"
-          />
-          <FormInput
-            name="itemDescription"
-            type="text"
-            label="Description"
-            value={itemDescription}
-            handleChange={handleChange}
-            placeholder="Description of the dish"
-          />
-          <FormInput
-            name="itemPrice"
-            type="text"
-            label="Price"
-            value={itemPrice}
-            handleChange={handleChange}
-            placeholder="Enter the price of the dish"
-          />
-          <Dropdown
-            name="itemCategory"
-            options={categories}
-            value={itemCategory}
-            label="Category"
-            handleChange={handleChange}
-        />
-        </div>
-        <div className="add-btn-div">
-          <div className="add-btn" onClick={addMenuItem}>
-            <FontAwesomeIcon icon="fa-solid fa-plus" /> Add New Dish
-          </div>
-        </div>
-        <div className="mainContainer">
-          <div className="menu">
-            <ul>
-              {menuCategoriesList.map(list => {
-                return (
-                  <><li key={list}>{list}</li></>
-                )
-              })}
-            </ul>
-          </div>
+  const removeChips = (categoryName) => {
+    const index = categories.indexOf(categoryName)
+    const newCategories = [...categories]
+    newCategories.splice(index, 1)
+    setCategories(newCategories)
+    console.log("Removing", categoryName)
+  }
+
+  return (
+    <div>
+      <div className="bg">
+        <div className="overlay-text">
+          <h2 className="res-title">Modest Restaurant</h2>
+          <h3 className="res-city">Kadi, Mehsana</h3>
+          <button className="update-btn">Download QR Code</button>
         </div>
       </div>
-    );
-  }
+      <div className="menu-div">Menu</div>
+      <div className="categories">
+        <ChipsList categories={categories} removeChips={removeChips}></ChipsList>
+        <div className="add-btn" onClick={openCategoryModal}>
+          <FontAwesomeIcon icon="fa-solid fa-plus" /> Add Category
+        </div>
+      </div>
+      <div className="menu-add-list">
+        <FormInput
+          name="itemName"
+          type="text"
+          label="Dish Name"
+          value={itemName}
+          handleChange={handleChange}
+          placeholder="Enter name of Dish"
+        />
+        <FormInput
+          name="itemDescription"
+          type="text"
+          label="Description"
+          value={itemDescription}
+          handleChange={handleChange}
+          placeholder="Description of the dish"
+        />
+        <FormInput
+          name="itemPrice"
+          type="text"
+          label="Price"
+          value={itemPrice}
+          handleChange={handleChange}
+          placeholder="Enter the price of the dish"
+        />
+        <Dropdown
+          name="itemCategory"
+          options={categories}
+          value={itemCategory}
+          label="Category"
+          handleChange={handleChange}
+        />
+      </div>
+      <div className="add-btn-div">
+        <div className="add-btn" onClick={addMenuItem}>
+          <FontAwesomeIcon icon="fa-solid fa-plus" /> Add New Dish
+        </div>
+      </div>
+      <div className="mainContainer">
+        <div className="menu">
+          <ul>
+            {menuCategoriesList.map((list) => {
+              return (
+                <>
+                  <li key={list}>{list}</li>
+                </>
+              );
+            })}
+          </ul>
+        </div>
+      </div>
+      <Modal isOpen={modal} onClose={handleCloseModal}>
+        <FormInput
+          name="categoryInput"
+          type="text"
+          label="Category Name"
+          value={categoryInput}
+          handleChange={handleChange}
+          placeholder="Enter name of Category"
+        />
+        <div className="add-btn" onClick={addNewCategory}>
+          <FontAwesomeIcon icon="fa-solid fa-plus" /> Add Category
+        </div>
+      </Modal>
+    </div>
+  );
+};
 
 export default RestaurantDetails;

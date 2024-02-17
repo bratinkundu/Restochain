@@ -3,7 +3,7 @@ import "./modal.styles.scss";
 
 const Modal = ({ isOpen, onClose, children }) => {
   const handleModalClose = (event) => {
-    event.preventDefault();
+    //event.preventDefault();
     onClose();
     console.log("Calling modal close", isOpen)
   };
