@@ -211,3 +211,10 @@
   color: #fff;
   background: rgb(106 149 242 / 80%);
 }
+
+@media (max-width: 768px) {
+  .mainContainer .menu{
+    width: 100%;
+    overflow-x: auto;
+  }
+}

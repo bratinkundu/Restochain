@@ -1,0 +1,76 @@
+
+
+/* menu-card.styles.scss */
+
+.parent-row {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-right: -15px;
+    margin-left: -15px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  
+  .col-sm-12, .col-lg-4, .col-md-4 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  
+  .card-menu {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+  }
+  
+  .card-img-top {
+    width: 100%;
+    height: 300px;
+    border-top-left-radius: calc(0.25rem - 1px);
+    border-top-right-radius: calc(0.25rem - 1px);
+  }
+  
+  .card-body {
+    flex: 1 1 auto;
+    padding: 1.25rem;
+  }
+  
+  .card-title {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+  }
+  
+  .card-text {
+    margin-bottom: 1.25rem;
+  }
+  /* Additional custom styles can be added as needed */
+  h3{
+    font-size: 1.75rem;
+  }
+
+
+  /* Media queries */
+  @media (min-width: 768px) {
+    .parent-row {
+      width: 750px;
+    }
+    
+  }
+  @media (min-width: 992px) {
+    .parent-row {
+      width: 970px;
+    }
+  }
+  @media (min-width: 1200px) {
+    .parent-row {
+      width: 1170px;
+    }
+  }

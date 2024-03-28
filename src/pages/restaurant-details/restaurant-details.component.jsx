@@ -6,6 +6,7 @@ import "./restaurant-details.styles.scss";
 import FormInput from "../../components/form-input/form-input.component";
 import Dropdown from "../../components/form-input/dropdown.component";
 import Modal from "../../components/modal/modal.component";
+import MenuCard from "../../components/menu-card/menu-card.component";
 
 const RestaurantDetails = () => {
   const [modal, setModal] = useState(false);
@@ -161,6 +162,7 @@ const RestaurantDetails = () => {
             })}
           </ul>
         </div>
+        <MenuCard menuItems={menu} />
       </div>
       <Modal isOpen={modal} onClose={handleCloseModal}>
         <FormInput
